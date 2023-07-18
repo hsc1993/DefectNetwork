@@ -108,9 +108,7 @@ jm=0;
 % Number of triangelized cylinder elements added to plot the 3D line
 n_cylinders=0; 
 % Calculate the 3D circle coordinates of the first circle/cylinder
-
 [a,b]=getab(normal(1,:));
-
 circm=normal_circle(angles,jm,a,b);
 % If not a closed line, add a half sphere made by 5 cylinders add the line start.
 if(~lclosed)
@@ -129,6 +127,7 @@ circmo=normal_circle([0 120 240],0,a,b);
 for i=1:length(linex)-1,
 % Create main cylinder between two line points which consists of two connect
 % circles.
+  
     pnormal1=normal(i,:); pline1=line(i,:);
     
     % Calculate the 3D circle coordinates
@@ -147,16 +146,14 @@ for i=1:length(linex)-1,
     circmp=circm*radius(i+1)+ones(vertex_num,1)*(pline2-bufdist*pnormal1);
     % Create vertex list
     n_cylinders=n_cylinders+1;
-    
     FV.vertices(((n_cylinders-1)*vertex_num+1):(n_cylinders*vertex_num),:)=[circmp(:,1) circmp(:,2) circmp(:,3)];
 % Create in between circle to smoothly connect line pieces.
     pnormal12=pnormal1+pnormal2; pnormal12=pnormal12./sqrt(sum(pnormal12.^2));
     pline12=0.5858*pline2+0.4142*(0.5*((pline2+bufdist*pnormal2)+(pline2-bufdist*pnormal1)));  
-    
+  
     % Rotate circle coordinates in plane to align with the previous circle
     % by minimizing distance between the coordinates of two circles with 3 coordinates.
     [a,b]=getab(pnormal12);
-    
     jm = fminsearch(@(j)minimize_rot([0 120 240],circmo,j,a,b),jm);              
     
     % Keep a 3 point circle for rotation alignment with the next circle
@@ -225,7 +222,6 @@ function [a,b]=getab(normal)
     % Thus a (random) vector is needed which is not orthogonal with 
     % the normal vector.
     randomv=[0.57745 0.5774 0.57735]; 
-    randomv=[-0.123 0.234 0.321]; %Alan changed this random vector because it is normal to my burgers vector!
     % This line is needed to prevent the case of normal vector orthogonal with
     % the random vector. But is now disabled for speed...
     % if(sum(abs(cross(randomv,normal)))<0.001), randomv=[0.58 0.5774 0.56]; end
