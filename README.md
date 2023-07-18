@@ -4,7 +4,7 @@ This repository simulates the formation of defects network near a saturated grai
 
 The project consists of three parts: 
 1. Simulating multiple batches of **prismatic loop evolution** using kMC algorithm embedded with Dislocation Dynamics module [dd3d_diffuse.m](dd3d_diffuse.m), all results from different batches are 'parallel' and stiched together using [merge.m](merge.m) and the [dislocation data files](dislocation.txt) are exported from it.
-2. Generating **cubic volume tessellation** with the [tessellation_orthogonal.m](tessellation_orthogonal.m). The [output](orthogonal20/n20_vorvx0) contains all the vertices of each volume element. 
+2. Generating **cubic volume tessellation** with the [tessellation_orthogonal.m](tessellation_orthogonal.m). The [output](orthogonal20/n20_vorvx0.txt) contains all the vertices of each volume element. 
 3. Conducting **GND signal analysis** with [main.py](main.py), which reads both the [dislocation data](dislocation.txt) and [volume mesh data](n100_voro.txt). It outputs information about dislocation segments after being truncated by volume cells, the volume, vertice and GND content of each volume cell.
 4. Generating **GND signal 3D map** with [voro_plot.m](voro_plot.m) and [result](orthogonal_merged20_voro_color.txt) is rendered in [3d_rendering.py](3d_rendering.py) for final 3d image of GND signal near the GB.
 
