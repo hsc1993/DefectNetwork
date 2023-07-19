@@ -46,9 +46,6 @@ The output of [main.py](GND_3d_analysis/main.py) will be further analyzed by [vo
 Use [3d_rendering.py](GND_rendering/3d_rendering.py) to process the [orthogonal_merged20_voro_color.txt](GND_3d_analysis/orthogonal_merged20_voro_color.txt) and we get <img src="GND_rendering/3d_gnd.png" width="500" height="500">   
 
 
-## Example
-
-
 
 ## Maintainers
 
