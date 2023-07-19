@@ -13,7 +13,6 @@ The project consists of three parts:
 
 - [Install](#install)
 - [Usage](#usage)
-- [Examples](#example)
 - [Maintainers](#maintainers)
 - [Contributing](#contributing)
 - [License](#license)
